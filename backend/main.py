@@ -53,8 +53,9 @@ def callback(request: Request):
 
     credentials = flow.credentials
     SESSION_TOKEN["credentials"] = credentials_to_dict(credentials)
-
-    return {"message": "Login successful! You can now fetch emails."}
+    emailList = get_emails()
+    # return {"message": "Login successful! You can now fetch emails."}
+    return {"message": emailList}
 
 # ---- Step 3: Fetch Emails ----
 @app.get("/emails")
